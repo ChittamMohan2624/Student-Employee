@@ -27,6 +27,11 @@ public class StudentController {
         return studentService.students();
     }
 
+    @GetMapping("/descStudents")
+    public List<Student> nameSortedStudent(){
+        return studentService.sortedStudents();
+    }
+
     @DeleteMapping("/delete/{sid}")
     public String deleteStudent(@PathVariable int sid){
         return studentService.delete(sid);
@@ -36,13 +41,12 @@ public class StudentController {
     public String updateEmail(@RequestBody Student student, @PathVariable int sid ){
        return studentService.updateEmail(student,sid);
 
-        //return ResponseEntity.ok(studentupdated);
     }
 
     @GetMapping("/getstudent/{sid}")
     public ResponseEntity<Student> onlyStudent(@PathVariable int sid){
         Optional<Student> optionalStudent= Optional.ofNullable(studentService.getStundent(sid));
-        //this is code
+
         return ResponseEntity.ok(optionalStudent.get());
     }
 
