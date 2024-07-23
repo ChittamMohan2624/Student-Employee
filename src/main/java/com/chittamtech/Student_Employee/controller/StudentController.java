@@ -42,7 +42,7 @@ public class StudentController {
     @GetMapping("/getstudent/{sid}")
     public ResponseEntity<Student> onlyStudent(@PathVariable int sid){
         Optional<Student> optionalStudent= Optional.ofNullable(studentService.getStundent(sid));
-
+        //this is code
         return ResponseEntity.ok(optionalStudent.get());
     }
 
