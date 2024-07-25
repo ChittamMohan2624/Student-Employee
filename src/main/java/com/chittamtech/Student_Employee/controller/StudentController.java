@@ -1,8 +1,8 @@
 package com.chittamtech.Student_Employee.controller;
 
-import com.chittamtech.Student_Employee.Exception.StudentNotFoundException;
 import com.chittamtech.Student_Employee.model.Student;
 import com.chittamtech.Student_Employee.service.StudentService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +48,12 @@ public class StudentController {
         Optional<Student> optionalStudent= Optional.ofNullable(studentService.getStundent(sid));
 
         return ResponseEntity.ok(optionalStudent.get());
+    }
+
+    @GetMapping("/getstudentByName/{sname}")
+    public List<Student> onlyStudent(@RequestParam(value = "sname") String sname){
+
+        return studentService.getStudentByName(sname);
     }
 
 }

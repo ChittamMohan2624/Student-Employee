@@ -6,13 +6,10 @@ import com.chittamtech.Student_Employee.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -68,6 +65,13 @@ public class StudentService {
             return optionalStudent.orElseThrow(()-> new StudentNotFoundException(sid));
         }
 
+    }
+
+    // Search by Student name
+
+    public List<Student> getStudentByName(String name){
+
+        return studentRepository.findBySname(name);
     }
 
 }

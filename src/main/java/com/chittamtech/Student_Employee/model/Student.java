@@ -15,10 +15,13 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int sid;
     private String sname;
+    private String fname;
     private String gender;
     private String email;
     private long mobile;
     private String address;
+    private String feeStatus;
+    private String classname;
 
 
 }
